@@ -1,44 +1,104 @@
-# Elevador Desafio
+# Elevador Desafio 🚪🛗
 
-Este é um pequeno programa em Python que simula a chamada de um elevador e o transporte de um usuário entre andares.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
-## Descrição
+Simulador didático de elevadores em Python — fácil de entender e estender.
 
-O script `elevador.py` mantém o estado de dois elevadores e aceita a entrada do usuário para:
+## Sumário
 
-- Informar o andar atual do usuário
-- Informar o andar de destino
-- Escolher o elevador mais próximo do usuário
-- Movimentar o elevador até o usuário e depois até o destino
+- [Demonstração visual](#demonstração-visual)
+- [Funcionalidades](#funcionalidades)
+- [Como executar](#como-executar)
+- [Exemplo rápido](#exemplo-rápido)
+- [Diagrama de fluxo](#diagrama-de-fluxo)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Contribuição](#contribuição)
+- [Melhorias sugeridas](#melhorias-sugeridas)
+- [Licença](#licença)
 
-O prédio possui os seguintes andares válidos:
+## Demonstração visual
 
--2, -1, 0, 1, 2, 3, 4
+> (adicione um GIF ou screenshot aqui para tornar o README ainda mais visual)
 
-## Requisitos
+![placeholder](https://via.placeholder.com/640x200.png?text=GIF+screenshot+do+simulador)
 
-- Python 3
+## Funcionalidades
+
+- Seleção do elevador mais próximo (desempate por nome)
+- Movimentação mostrada passo-a-passo
+- Validação de entrada com opção de sair (`q`)
+- Andares válidos: **-2, -1, 0, 1, 2, 3, 4**
 
 ## Como executar
 
-No terminal, navegue até a pasta do projeto e execute:
+No terminal, dentro da pasta do projeto, execute:
 
 ```bash
 python elevador.py
 ```
 
-## Exemplo de uso
+No Windows, use o comando `python` conforme configurado no PATH.
 
-1. Informe o andar em que você está.
-2. Informe o andar para onde deseja ir.
-3. O programa mostrará qual elevador foi chamado e o trajeto realizado.
+## Exemplo rápido
+
+Entrada/saída de exemplo (usuário à esquerda, programa à direita):
+
+```text
+> Em qual andar você está?  2
+> Para qual andar você quer ir?  -1
+
+Elevador A está no andar 0.
+Elevador A foi chamado para o andar 2.
+Distância até o usuário: 2
+
+Elevador A indo até o andar do usuário...
+Elevador A passando pelo andar 1.
+Elevador A passando pelo andar 2.
+Usuário entrou no Elevador A.
+Elevador A indo para o andar -1...
+Elevador A passando pelo andar 1.
+Elevador A passando pelo andar 0.
+Elevador A passando pelo andar -1.
+
+Chegou ao andar -1.
+Nova posição de Elevador A: andar -1
+```
+
+## Diagrama de fluxo
+
+```mermaid
+flowchart LR
+	U[Usuário] -->|chama| C(Chamada)
+	C --> S{Seleciona elevador}
+	S -->|mais perto| E1[Elevador A]
+	S -->|mais perto| E2[Elevador B]
+	E1 --> M1[Mover até usuário]
+	E2 --> M1
+	M1 --> Enter[Usuário entra]
+	Enter --> M2[Mover até destino]
+	M2 --> Arr[Chegada]
+```
 
 ## Estrutura do projeto
 
-- `elevador.py` - código principal do simulador de elevador
-- `README.md` - documentação do projeto
+- `elevador.py` — código principal do simulador
+- `README.md` — documentação (você está aqui)
 
-## Observações
+## Contribuição
 
-- O programa trata entradas inválidas e andares fora do intervalo definido.
-- Se o usuário informar o mesmo andar de origem e destino, o programa exibirá uma mensagem apropriada.
+1. Abra uma issue descrevendo a ideia ou bug.
+2. Crie um branch, implemente e envie um pull request.
+
+Sugestões rápidas: incluir GIFs, adicionar testes automatizados, e permitir
+configuração externa dos elevadores.
+
+## Melhorias sugeridas
+
+- Suportar configuração externa (JSON/YAML) para número e posição inicial dos elevadores.
+- Modo não interativo para rodar simulações em lote.
+- Adicionar testes unitários e CI.
+
+## Licença
+
+Este projeto está disponível sob a licença MIT.
